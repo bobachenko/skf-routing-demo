@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SKF routing demo</title>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<link rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+	integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+	crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+	integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+	crossorigin=""></script>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue"></script>
+<script src="js/map.js"></script>
+<script src="js/main.js"></script>
+</head>
+
+<body onload="app()">
+	<div class="content">
+		<div class="header">
+			<div class="header_content">Расчет оптимальных маршрутов на основе матрицы путей (демо)</div>			
+		</div>
+
+		<div class="left" id="form">
+			<div id="divPoints">
+				<div class="label">Пункты доставки</div>
+				<select id="lbPounts" multiple="multiple" v-model="selectedPoints" title="Выберите несколько пунктов одновременно нажимая Ctrl">
+					<option v-bind:value="point.id" v-for="point in points">{{point.name}}</option>
+				</select> <input type="button" v-on:click="makeRoute"
+					value="Построить маршрут" class="button" />
+			</div>
+
+			<div id="divResult">
+				<div class="label">Маршрут</div>
+				<ol class="rounded-list">
+					<li id="olResult" v-for="item in routeItems">{{ item.fromName }} - {{ item.toName }}
+						- {{ item.distance }} км.</li>
+				</ol>
+			</div>
+
+		</div>
+		<div class="center">
+			<div id="map"></div>
+		</div>
+
+		<div class="footer">footer</div>
+	</div>
+</body>
+</html>

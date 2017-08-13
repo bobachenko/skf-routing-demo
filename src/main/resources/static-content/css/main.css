@@ -1,0 +1,150 @@
+@CHARSET "UTF-8";
+
+html, body {
+	height: 100%; 
+	margin: 0; 
+}
+
+.label {
+	font-weight: bold;
+	text-align: left;
+	font-size: 12pt;
+	color: #226622;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.header, .left, .center, .footer {
+	border: 1px solid;
+	border-color: #cccccc;
+	padding: 10px;
+}
+
+.content {
+	height: auto;
+	margin: 10px auto 0px auto;
+	height: 80%;
+	width: 1200px;
+	position: relative;
+}
+
+.header {
+	margin-bottom: 3px;
+	height: 60px;
+	background-image: url("../img/logo.png");
+	background-size: 110px;
+    background-repeat: no-repeat;
+}
+
+.header_content {
+	position: relative;
+	font-weight: bold;
+	font-size: 18pt;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #555555;
+	left: 110px;
+	top: 15px;
+}
+
+.left {
+	width: 400px;
+	height: 100%;
+	float: left;
+	padding: 0px;
+	padding-left: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.center {
+	height: 100%;
+	margin-left: 410px;
+	padding: 0px;
+}
+
+.footer {
+	margin-top: 5px;
+	display: none;
+}
+
+#map {
+	height: 100%;
+}
+
+#lbPounts {
+	width: 100%;
+	height: 80%;
+	font-size: 12pt;
+	border: none;
+}
+
+option:checked, option:hover {
+    color: #444444;
+    background: #eeeeee;
+}
+
+
+#divPoints {
+	height: 60%;
+	text-align: center;
+}
+
+#divResult {
+	overflow-y: scroll;
+	height: 39%;
+}
+
+.button {
+    background-color: red; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Unordered list syle */
+ol {
+	counter-reset:li; /* Initiate a counter */
+	margin-left:0; /* Remove the default left margin */
+	padding-left:0; /* Remove the default left padding */
+	font-size: 10pt;
+}
+ol > li {
+	position:relative; /* Create a positioning context */
+	margin:0 0 6px 2em; /* Give each list item a left margin to make room for the numbers */
+	padding:4px 8px; /* Add some spacing around the content */
+	list-style:none; /* Disable the normal item numbering */
+	border-top:2px solid #4CAF50;
+	background:#f6f6f6;
+}
+ol > li:before {
+	content:counter(li); /* Use the counter as content */
+	counter-increment:li; /* Increment the counter by 1 */
+	/* Position and style the number */
+	position:absolute;
+	top:-2px;
+	left:-2em;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	width:2em;
+	/* Some space between the number and the content in browsers that support
+	   generated content but not positioning it (Camino 2 is one example) */
+	margin-right:8px;
+	padding:4px;
+	border-top:2px solid #4CAF50;
+	color:#fff;
+	background:#4CAF50;
+	font-weight:bold;
+	font-family:"Helvetica Neue", Arial, sans-serif;
+	text-align:center;
+}
+li ol,
+li ul {margin-top:6px;}
+ol ol li:last-child {margin-bottom:0;}
+
+/* End Unordered list syle */
