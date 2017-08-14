@@ -21,4 +21,11 @@ public abstract class Entity {
 	
 	public Entity() {
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%s Id=%s", this.getClass().getSimpleName(), id);
+	}
+	
+	
 }

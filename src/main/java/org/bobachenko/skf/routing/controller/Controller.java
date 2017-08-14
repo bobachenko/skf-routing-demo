@@ -1,9 +1,8 @@
 package org.bobachenko.skf.routing.controller;
 
 import java.util.List;
-
-import org.bobachenko.skf.routing.model.Path;
 import org.bobachenko.skf.routing.model.Point;
+import org.bobachenko.skf.routing.model.Route;
 
 import spark.Request;
 import spark.Response;
@@ -14,5 +13,5 @@ import spark.Response;
  */
 public interface Controller {
 	List<Point> getPoints(Request req, Response res);
-	List<Path> getRoute(Request req, Response res);
+	Route getRoute(Request req, Response res);
 }

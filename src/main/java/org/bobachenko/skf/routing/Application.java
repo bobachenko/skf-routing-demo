@@ -34,7 +34,7 @@ public class Application {
 	private void makeResources() {
 		// set resources
 		get("/api/points", (req, res) -> controller.getPoints(req, res), gson::toJson);
-		get("/api/route/:ids", (req, res) -> controller.getRoute(req, res), gson::toJson);
+		get("/api/route/:ids/:useFull", (req, res) -> controller.getRoute(req, res), gson::toJson);
 		
 		// set filter for each request to api
 		after("/api/*", (request, response) -> {

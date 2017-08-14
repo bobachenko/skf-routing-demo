@@ -27,11 +27,12 @@
 
 		<div class="left" id="form">
 			<div id="divPoints">
-				<div class="label">Пункты доставки</div>
+				<div class="label">Пункты доставки</div>				
 				<select id="lbPounts" multiple="multiple" v-model="selectedPoints" title="Выберите несколько пунктов одновременно нажимая Ctrl">
 					<option v-bind:value="point.id" v-for="point in points">{{point.name}}</option>
-				</select> <input type="button" v-on:click="makeRoute"
-					value="Построить маршрут" class="button" />
+				</select> 
+				<input type="checkbox" v-model="useFull"> Полный перебор &nbsp;&nbsp;
+				<input type="button" v-on:click="makeRoute"	value="Построить маршрут" class="button" />
 			</div>
 
 			<div id="divResult">
@@ -40,6 +41,7 @@
 					<li id="olResult" v-for="item in routeItems">{{ item.fromName }} - {{ item.toName }}
 						- {{ item.distance }} км.</li>
 				</ol>
+				<div v-if="total!=0">Общая протяженность: {{total}} км.</div>
 			</div>
 
 		</div>

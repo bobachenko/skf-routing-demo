@@ -1,3 +1,6 @@
+
+var MAX_POINTS = 8;
+
 function app() {
 	map.initMap();
 
@@ -8,7 +11,9 @@ function app() {
 		data : {
 			points : [],			
 			routeItems : [],			
-			selectedPoints: []
+			selectedPoints: [],
+			total: 0,
+			useFull: false
 		},
 		
 		// init function
@@ -39,16 +44,22 @@ function app() {
 					return;
 				}
 				
-				axios.get('/api/route/'+this.selectedPoints)
+				if(this.useFull && this.selectedPoints.length > MAX_POINTS) {
+					alert("Может быть выбрано не более "+MAX_POINTS+" пунктов.");
+					return;
+				}
+				
+				axios.get('/api/route/'+this.selectedPoints+'/'+this.useFull)
 				  .then(function (response) {
 					  
 					  // convert meters to kilometers
-					  response.data.forEach(function(item){
+					  response.data.paths.forEach(function(item){
 						  item.distance = (item.distance / 1000).toFixed(2);
 					  });
 					  
-					  self.routeItems = response.data;
-					  map.addPath(response.data);
+					  self.routeItems = response.data.paths;
+					  self.total = (response.data.distance / 1000).toFixed(2);
+					  map.addPath(response.data.paths);
 				  })
 				  .catch(function (error) {
 					    alert(error);
