@@ -22,13 +22,14 @@
 <body onload="app()">
 	<div class="content">
 		<div class="header">
-			<div class="header_content">Расчет оптимальных маршрутов на основе матрицы путей (демо)</div>			
+			<div class="header_content">Расчет маршрутов на основе матрицы расстояний (демо)</div>			
 		</div>
 
 		<div class="left" id="form">
 			<div id="divPoints">
 				<div class="label">Пункты доставки</div>				
-				<select id="lbPounts" multiple="multiple" v-model="selectedPoints" title="Выберите несколько пунктов одновременно нажимая Ctrl">
+				<select id="lbPounts" multiple="multiple" v-model="selectedPoints" 
+					title="Выберите несколько пунктов одновременно нажимая Ctrl">
 					<option v-bind:value="point.id" v-for="point in points">{{point.name}}</option>
 				</select> 
 				<input type="checkbox" v-model="useFull"> Полный перебор &nbsp;&nbsp;
@@ -42,8 +43,8 @@
 						- {{ item.distance }} км.</li>
 				</ol>
 				<div v-if="total!=0">Общая протяженность: {{total}} км.</div>
+				<div v-if="total!=0">Время расчета: {{calcTime}} мс.</div>
 			</div>
-
 		</div>
 		<div class="center">
 			<div id="map"></div>

@@ -32,7 +32,7 @@ public class OsrmHelperTest {
 		OsrmHelper osrm = new OsrmHelper(OSRM_URL);
 		Repository repo = new MemoryRepository();
 
-		String template = "pathList.add(new Path(%s, %s, \"%s\", %s, \"%s\", %s, \"%s\"));";
+		String template = "matrixOfShortestDist.add(new Path(%s, %s, \"%s\", %s, \"%s\", %s, \"%s\"));";
 
 		List<Point> pointList = repo.getPoints();
 

@@ -36,7 +36,7 @@ public class Application {
 		get("/api/points", (req, res) -> controller.getPoints(req, res), gson::toJson);
 		get("/api/route/:ids/:useFull", (req, res) -> controller.getRoute(req, res), gson::toJson);
 		
-		// set filter for each request to api
+		// set filter
 		after("/api/*", (request, response) -> {
 			response.type("application/json");
 		});

@@ -24,6 +24,8 @@ public class SerialRouteProcessor extends RouteProcessor {
 	 */
 	@Override
 	public Route makeRoute(List<Long> pointIdList) {
+		
+		long startTime = System.currentTimeMillis();
 	
 		if(pointIdList==null || pointIdList.isEmpty())
 			throw new IllegalArgumentException("Argument shouldn't be empty.");
@@ -43,7 +45,7 @@ public class SerialRouteProcessor extends RouteProcessor {
 			pointIdList.remove(currentPoint);
 		}		
 		
-		return new Route(paths, distance);
+		return new Route(paths, distance, System.currentTimeMillis() - startTime);
 	}
 	
 	

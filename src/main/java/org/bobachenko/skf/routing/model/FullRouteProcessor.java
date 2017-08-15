@@ -24,6 +24,8 @@ public class FullRouteProcessor extends RouteProcessor {
 	 */
 	@Override
 	public Route makeRoute(List<Long> pointIdList) {
+		
+		long startTime = System.currentTimeMillis();
 	
 		if(pointIdList==null)
 			throw new IllegalArgumentException("Argument shouldn't be null.");
@@ -43,7 +45,11 @@ public class FullRouteProcessor extends RouteProcessor {
 	    	routeList.add(buildRouteVariant(storeId, variant));
 	    }
 		
-		return routeList.stream().min((r1, r2) -> Double.compare(r1.getDistance(), r2.getDistance())).get();
+	    Route r = routeList.stream().min((r1, r2) -> Double.compare(r1.getDistance(), r2.getDistance())).get();
+	    
+	    r.setCalculationTime(System.currentTimeMillis() - startTime);
+	    
+		return r;
 	}
 
 	private Route buildRouteVariant(long storeId, List<Long> variantIdList) {

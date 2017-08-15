@@ -1,5 +1,5 @@
 
-var MAX_POINTS = 8;
+var MAX_POINTS = 9;
 
 function app() {
 	map.initMap();
@@ -8,11 +8,12 @@ function app() {
 		el : '#form',
 		
 		// data
-		data : {
-			points : [],			
-			routeItems : [],			
+		data: {
+			points: [],			
+			routeItems: [],			
 			selectedPoints: [],
 			total: 0,
+			calcTime: 0,
 			useFull: false
 		},
 		
@@ -22,8 +23,8 @@ function app() {
 	    },
 		
 	    // operations
-		methods : {
-			loadPoints : function(){
+		methods: {
+			loadPoints: function(){
 		        var self = this;
 				axios.get('/api/points')
 				  .then(function (response) {
@@ -35,7 +36,7 @@ function app() {
 				  });
 			},
 			
-			makeRoute : function() {
+			makeRoute: function() {
 				this.routeItems = [];
 				var self = this;
 				
@@ -59,6 +60,7 @@ function app() {
 					  
 					  self.routeItems = response.data.paths;
 					  self.total = (response.data.distance / 1000).toFixed(2);
+					  self.calcTime = response.data.calculationTime == 0 ? "<1" : response.data.calculationTime;
 					  map.addPath(response.data.paths);
 				  })
 				  .catch(function (error) {
